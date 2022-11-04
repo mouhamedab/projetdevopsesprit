@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class StockServiceImplTest {
-
+/*
     @Autowired
     IStockService stockService;
     @Autowired
@@ -61,7 +61,7 @@ public class StockServiceImplTest {
 
 
     }
-
+*/
 }
 
 

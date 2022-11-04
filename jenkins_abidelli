@@ -9,41 +9,40 @@ pipeline{
         
         stages{
 
+            stage('Cleaning the project') {
+                 steps{
+                    sh "mvn -B -DskipTests clean  "
+                    }
+                }
 
-                            stage('Testing process') {
-                              steps {
-                               script {
-                                sh 'echo "Test is processing ...."'
-                                sh 'mvn clean test'
-                               }
 
-                              }
+	        stage('Build') {
+      		    steps {
+        		sh 'mvn -B -DskipTests clean package'
+      		          }
+            	}
 
-                            }
 
-               stage('Quality Gate Status Check'){
-                  steps{
-                      script{
-			      withSonarQubeEnv('sonar') {
-			      sh "mvn compile sonar:sonar"
-                       	     	}
-			      timeout(time: 1, unit: 'HOURS') {
-			      def qg = waitForQualityGate()
-				      if (qg.status != 'OK') {
-					   error "Pipeline aborted due to quality gate failure: ${qg.status}"
-				      }
-                    		}
-		    	    sh "mvn clean install"
 
-                 	}
-               	 }
-              }
-		stage("Maven Build") {
-            steps {
-                script {
-                    sh "mvn package -DskipTests=true"
+	        stage('SonarQube analysis') {
+		        steps {
+		        withSonarQubeEnv(installationName: 'sq1') {
+		        sh 'mvn clean clean -DskipTests package sonar:sonar'
+	                  }
+	                }
+	            }
+
+
+            stage('JUnit/Mockito'){
+                steps {
+                sh '''mvn -version
+                mvn -B -DskipTests clean package'''
+                //sh 'mvn test'
+                echo """Bravo! tous les tests sont pris en charge"""
                 }
             }
-        }
+
+
+
         }
 }

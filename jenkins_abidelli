@@ -35,15 +35,13 @@ pipeline{
                 }
             }
 
-  stage ('SonarQube analysis') {
-            steps{
-                sh 'mvn sonar:sonar'
-		-D sonar.host.url=http://http://192.168.56.3:9000/
-		-D sonar.login=3fcbf752c7290655ff3ff72484e017e46c045081
-		-D sonar.login=admin
-		-D sonar.password=21449897
-            }
-        }
+       stage("SonarQube Analysis") {
+                       steps {
+                         withSonarQubeEnv('sonarmed') {
+                           sh 'mvn clean -DskipTests package sonar:sonar'
+                         }
+                       }
+                     }
 
 
         }

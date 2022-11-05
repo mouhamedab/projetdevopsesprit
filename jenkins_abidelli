@@ -38,8 +38,8 @@ pipeline{
 
  stage ('SonarQube analysis') {
              steps {
-           		        withSonarQubeEnv('sonar') {
-           		        sh 'mvn clean clean -DskipTests package sonar:sonar'
+           		        withSonarQubeEnv(credentialsId: 'sonar-api') {
+           		        sh 'mvn  clean  package sonar:sonar'
            	                  }
            	                }
         }

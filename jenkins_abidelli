@@ -34,17 +34,13 @@ pipeline{
                 echo """Bravo! tous les tests sont pris en charge"""
                 }
             }
-               stage('Quality Gate Status Check'){
-                  steps{
-                      script{
-			      withSonarQubeEnv('sonar') {
-			      sh "mvn compile sonar:sonar"
-                       	     	}
-
-
-                 	}
-               	 }
-              }
+           stage("SonarQube Analysis") {
+                      steps {
+                        withSonarQubeEnv('SonarQube') {
+                          sh 'mvn clean -DskipTests package sonar:sonar'
+                        }
+                      }
+                    }
 
 
 

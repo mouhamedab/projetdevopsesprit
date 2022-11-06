@@ -34,7 +34,6 @@ pipeline{
                 echo """Bravo! tous les tests sont pris en charge"""
                 }
             }
-
        stage("SonarQube Analysis") {
                        steps {
                          withSonarQubeEnv('sonarmed') {
@@ -42,6 +41,11 @@ pipeline{
                          }
                        }
                      }
+                      stage("NEXUS") {
+                             	    steps {
+                     		        sh 'mvn clean deploy -DskipTests'
+                                           }
+                                     }
 
 
         }

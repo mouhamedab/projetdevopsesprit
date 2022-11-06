@@ -8,8 +8,7 @@ pipeline {
         stage('Build mvn'){
             steps{
                
-                checkout([$class: 'GitSCM', branches: [[name: '*/ahmedhaddad']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/mouhamedab/projetdevopsesprit.git
-']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/ahmedhaddad']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/mouhamedab/projetdevopsesprit.git']]])
                 sh 'mvn clean install'
             }
          }        

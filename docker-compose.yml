@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  mysqldb:
+    image: mysql
+    container_name: mysqldb
+    restart: unless-stopped
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+      - MYSQL_DATABASE=achatdb
+    ports:
+      - 3306:3306
+    volumes:
+      - db:/var/lib/mysql
+  app:
+    depends_on:
+      - mysqldb
+    image: ahmedhaddad29/achat-1.0-sk
+    restart: on-failure
+    ports:
+      - 8089:8089
+    volumes:
+      - .m2:/root/.m2
+    stdin_open: true
+    tty: true
+
+volumes:
+  db:
+Footer
+© 2022 GitHub, Inc.

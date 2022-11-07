@@ -21,11 +21,6 @@ pipeline{
         		sh 'mvn -B -DskipTests clean package'
       		          }
             	}
-
-
-
-
-
             stage('JUnit/Mockito'){
                 steps {
                 sh '''mvn -version

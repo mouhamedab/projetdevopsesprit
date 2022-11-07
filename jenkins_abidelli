@@ -38,20 +38,19 @@ pipeline{
                      }
                            stage("upload war to nexus") {
                                            steps {
-                                           nexusArtifactUploader artifacts:
-                                            [[
-                                            artifactId: 'spring-boot-starter-parent',
-                                            classifier: '',
-                                            file: 'target/achat-2.5.3.war',
-                                            type: 'war'
-                                            ]],
+                                         nexusArtifactUploader artifacts:
+                                          [[
+                                          artifactId: 'achat',
+                                          classifier: '',
+                                          file: 'target/achat-1.0.war',
+                                           type: 'war']],
                                             credentialsId: 'nexus',
-                                             groupId: 'org.springframework.boot',
-                                              nexusUrl: '192.168.56.3:8081',
-                                              nexusVersion: 'nexus2',
-                                              protocol: 'http',
-                                              repository: 'http://192.168.56.3:8081/repository/simpleapp-release/',
-                                               version: '2.5.3'
+                                             groupId: 'tn.esprit.rh',
+                                             nexusUrl: '172.31.15.204',
+                                              nexusVersion: 'nexus3',
+                                               protocol: 'http',
+                                                repository: 'http://192.168.56.3:8081/#admin/repository/repositories:simpleapp-release',
+                                                version: '1.0'
                                            }
                                            }
 

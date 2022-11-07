@@ -36,7 +36,7 @@ pipeline{
                                           [[
                                           artifactId: 'achat',
                                           classifier: '',
-                                          file: 'target/achat-1.0.jar',
+                                          file: 'target/springprojet.jar',
                                            type: 'jar']],
                                             credentialsId: 'nexus',
                                              groupId: 'tn.esprit.rh',

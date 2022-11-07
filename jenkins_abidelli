@@ -36,11 +36,11 @@ pipeline{
                                           [[
                                           artifactId: 'achat',
                                           classifier: '',
-                                          file: 'target/achat.jar',
+                                          file: 'target/springprojet.jar',
                                            type: 'jar']],
                                             credentialsId: 'nexus',
                                              groupId: 'tn.esprit.rh',
-                                             nexusUrl: '192.168.56.3',
+                                             nexusUrl: '192.168.56.3:8081',
                                               nexusVersion: 'nexus3',
                                                protocol: 'http',
                                                 repository: 'simpleapp-release/',

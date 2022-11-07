@@ -29,13 +29,7 @@ pipeline{
                 echo """Bravo! tous les tests sont pris en charge"""
                 }
             }
-       stage("SonarQube Analysis") {
-                       steps {
-                         withSonarQubeEnv('sonarmed') {
-                           sh 'mvn clean -DskipTests package sonar:sonar'
-                         }
-                       }
-                     }
+
                            stage("upload war to nexus") {
                                            steps {
                                          nexusArtifactUploader artifacts:

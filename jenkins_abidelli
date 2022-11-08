@@ -34,12 +34,13 @@ pipeline{
                 }
             }
 
-                stage("DockerBuild") {
-                steps {
-                sh '''
-                docker build -t mouhamedabdelli/springprojet .'''
+                  stage('Build docker image'){
+            steps{
+                script{
+                    sh 'docker build -t mouhamedabidelli/springprojet .'
                 }
-                }
+            }
+        }
 
              stage("DockerLogin") {
                 steps {

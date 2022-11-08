@@ -50,7 +50,7 @@ pipeline{
 
               stage("DockerPush") {
                  steps {
-                 sh 'docker push mouhamedabdelli/springprojet'
+                 sh 'docker push mouhamedabidelli/springprojet'
                 }
                 }
 

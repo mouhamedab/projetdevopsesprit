@@ -37,7 +37,7 @@ pipeline{
                   stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker build -t mouhamedabidelli/springprojet .'
+                    sh 'docker build -t mouhamedabdelli/springprojet .'
                 }
             }
         }
@@ -50,7 +50,7 @@ pipeline{
 
    stage("DockerPush") {
                  steps {
-                 sh 'docker push mouhamedabidelli/springprojet'
+                 sh 'docker push mouhamedabdelli/springprojet'
                 }
                 }
            

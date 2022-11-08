@@ -30,7 +30,30 @@ pipeline{
                 }
             }
 
-                
+                stage("DockerBuild") {
+                steps {
+                sh '''
+                docker build -t mouhamedabdelli/achat:latest .'''
+                }
+                }
+
+             stage("DockerLogin") {
+                steps {
+                sh 'docker login --username mouhamedabdelli --password 21449897Med'
+                }
+                }
+
+              stage("DockerPush") {
+                 steps {
+                 sh 'docker push mouhamedabdelli/achat:latest'
+                }
+                }
+
+              stage("DockerCompose") {
+                 steps {
+                 sh 'docker-compose up -d '
+                }
+                }
 		     
 		   
 

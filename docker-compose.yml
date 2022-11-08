@@ -1,0 +1,43 @@
+version: "3.3"
+
+services:
+
+  mysqldb:
+    image: mysql:5.7
+    container_name: mysqldbco
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      MYSQL_ROOT_PASSWORD: 'devops'
+      MYSQL_DATABASE: 'achatdb'
+      MYSQL_USER: 'devops'
+      MYSQL_PASSWORD: 'devops'
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - 3306:3306
+    volumes:
+      - db:/var/lib/mysql
+  app:
+    depends_on:
+      - mysqldb
+    image:  alakrms/achat
+    restart: on-failure
+    env_file: ./.env
+    ports:
+      - 8089:8089
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "spring.datasource.url"  : "jdbc:mysql://mysqldb:3306/achatdb?useSSL=false",
+        "spring.datasource.username" : "devops",
+        "spring.datasource.password" : "devops",
+        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
+        "spring.jpa.hibernate.ddl-auto" : "update"
+      }'
+
+    volumes:
+      - .m2:/root/.m2
+    stdin_open: true
+    tty: true
+
+volumes:
+  db:

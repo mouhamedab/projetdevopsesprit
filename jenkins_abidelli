@@ -64,6 +64,7 @@ pipeline{
                 }
 		     
 		   post {
+		   script{
                 success {
                      mail to: "mouhamed.abidelli@esprit.tn",
                             subject: "Build sucess",
@@ -77,7 +78,7 @@ pipeline{
                     echo 'failed'
                 }
               }
-        
+        }
 
         }
 }

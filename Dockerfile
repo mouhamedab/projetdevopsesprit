@@ -1,4 +1,4 @@
-FROM openjdk:8-jre-alpine
-ADD target/springprojet.jar
-EXPOSE 8089
-ENTRYPOINT ["java", "-jar", "achat.jar"]
+FROM openjdk:11
+EXPOSE 8082
+ADD target/springprojet.jar springprojet.jar
+ENTRYPOINT ["java","-jar","/springprojet.jar"]

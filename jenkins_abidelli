@@ -48,16 +48,11 @@ pipeline{
                 }
                 }
 
-  stage('Push image to Hub'){
-            steps{
-                script{
-		       withDockerRegistry([ credentialsId: "mouhamedabdelli", url: "https://hub.docker.com/u/mouhamedabdelli" ]) {
-        dockerImage.push()
-        }
-                   sh 'docker push mouhamedabidelli/springprojet'
+   stage("DockerPush") {
+                 steps {
+                 sh 'docker push alakrms/achat:latest'
                 }
-            }
-        }
+                }
            
             
              

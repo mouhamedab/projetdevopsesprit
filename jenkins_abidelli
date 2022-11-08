@@ -48,11 +48,20 @@ pipeline{
                 }
                 }
 
-              stage("DockerPush") {
-                 steps {
-                 sh 'docker push mouhamedabidelli/springprojet'
+  stage('Push image to Hub'){
+            steps{
+                script{
+		withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+                   sh 'docker login -u mouhamedabdelli -p $dockerhubpwd docker.io'
+}
+
+                   sh 'docker push mouhamedabidelli/springprojet'
                 }
-                }
+            }
+        }
+           
+            
+             
 
               stage("DockerCompose") {
                  steps {

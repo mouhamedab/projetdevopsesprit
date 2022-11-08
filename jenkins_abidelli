@@ -63,7 +63,10 @@ pipeline{
                 }
                 }
 		     
-		   post {
+		 
+
+        }
+	  post {
 		   script{
                 success {
                      mail to: "mouhamed.abidelli@esprit.tn",
@@ -78,8 +81,6 @@ pipeline{
                     echo 'failed'
                 }
               }
-        }
-
         }
 }
 

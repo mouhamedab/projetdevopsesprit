@@ -63,7 +63,21 @@ pipeline{
                 }
                 }
 		     
-		   
+		   post {
+                success {
+                     mail to: "mouhamed.abidelli@esprit.tn",
+                            subject: "Build sucess",
+                            body: "sucess"
+                    echo 'successful'
+                }
+                failure {
+                     mail to: "mouhamed.abidelli@esprit.tn",
+                            subject: "Build failed",
+                            body: "failed"
+                    echo 'failed'
+                }
+              }
+        }
 
         }
 }

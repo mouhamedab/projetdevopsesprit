@@ -13,14 +13,20 @@ pipeline {
             }
          }  
         
-          
-       stage('SonarQube analysis') {
+         stage('Build'){
+            steps{
+                sh 'mvn clean package'
+            }
+         }
+        stage('SonarQube analysis') {
         steps{
         withSonarQubeEnv('SonarQube-8.9.7') { 
         sh "mvn sonar:sonar"
     }
         }
         }
+          
+      
         stage('Build docker image'){
             steps{
                 script{

@@ -33,30 +33,7 @@ pipeline{
                 echo """Bravo! tous les tests sont pris en charge"""
                 }
             }
-	    stage("SonarQube Analysis") {
-                       steps {
-                         withSonarQubeEnv('sonarab') {
-                           sh 'mvn clean -DskipTests package sonar:sonar'
-                         }
-                       }
-                     }
-		     stage("upload war to nexus") {
-                                           steps {
-                                         nexusArtifactUploader artifacts:
-                                          [[
-                                          artifactId: 'achat',
-                                          classifier: '',
-                                          file: 'target/springprojet.jar',
-                                           type: 'jar']],
-                                            credentialsId: 'nexus',
-                                             groupId: 'tn.esprit.rh',
-                                             nexusUrl: '192.168.56.3:8081',
-                                              nexusVersion: 'nexus3',
-                                               protocol: 'http',
-                                                repository: 'simpleapp-release/',
-                                                version: '1.0'
-                                           }
-                                           }
+	 
 
 
                   stage('Build docker image'){

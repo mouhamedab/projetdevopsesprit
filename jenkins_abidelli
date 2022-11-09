@@ -33,38 +33,32 @@ pipeline{
                 echo """Bravo! tous les tests sont pris en charge"""
                 }
             }
-	 
+	  stage("SonarQube Analysis") {
+                       steps {
+                         withSonarQubeEnv('sonarab') {
+                           sh 'mvn clean -DskipTests package sonar:sonar'
+                         }
+                       }
+                     }
+		     stage("upload war to nexus") {
+                                           steps {
+                                         nexusArtifactUploader artifacts:
+                                          [[
+                                          artifactId: 'achat',
+                                          classifier: '',
+                                          file: 'target/springprojet.jar',
+                                           type: 'jar']],
+                                            credentialsId: 'nexus',
+                                             groupId: 'tn.esprit.rh',
+                                             nexusUrl: '192.168.56.3:8081',
+                                              nexusVersion: 'nexus3',
+                                               protocol: 'http',
+                                                repository: 'simpleapp-release/',
+                                                version: '1.0'
+                                           }
+                                           }
 
 
-                  stage('Build docker image'){
-            steps{
-                script{
-                    sh 'docker build -t mouhamedabdelli/springprojet .'
-                }
-            }
-        }
-
-             stage("DockerLogin") {
-                steps {
-                sh 'docker login --username mouhamedabdelli --password 21449897Med'
-                }
-                }
-
-   stage("DockerPush") {
-                 steps {
-                 sh 'docker push mouhamedabdelli/springprojet'
-                }
-                }
-           
-            
-             
-
-              stage("DockerCompose") {
-                 steps {
-                 sh 'docker-compose up -d '
-                }
-                }
-		     
 		 
 
         }

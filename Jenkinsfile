@@ -51,7 +51,13 @@ agent any
                                        echo """Bravo! tous les tests sont pris en charge"""
                                        }
                                    }
-
+					stage('Sending email'){
+	            			steps {
+	             mail bcc: '', body: '''Hello from ayman,
+	             Devops Pipeline with success.
+	             Cordialement''', cc: '', from: '', replyTo: '', subject: 'Devops', to: 'ayman.aloulou@esprit.tn'
+	             }
+	        }
 
                }
        }

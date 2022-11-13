@@ -33,13 +33,12 @@ agent any
                        echo """Bravo! tous les tests sont pris en charge"""
                        }
                    }
-                  stage("SonarQube Analysis") {
-                             steps {
-                               withSonarQubeEnv('sonar') {
-                                 sh 'mvn clean -DskipTests package sonar:sonar'
-                               }
-                             }
-                           }
+
+                  stage('SonarQube analysis 1') {
+                              steps {
+                                  sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
+                              }
+                          }
 
 
 

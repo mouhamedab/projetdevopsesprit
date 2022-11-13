@@ -36,7 +36,7 @@ agent any
                   stage('Nexus Repository Manager') {
                             steps {
                                 script {
-                					nexusArtifactUploader artifacts: [[artifactId: 'achat', classifier: '', file: 'target/achat-1.0.jar', type: 'jar']], credentialsId: 'NEXUS', groupId: 'tn.esprit.rh', nexusUrl: '192.168.56.3:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshots', version: '1.0'
+                					nexusArtifactUploader artifacts: [[artifactId: 'achat', classifier: '', file: 'target/achat-1.0.jar', type: 'jar']], credentialsId: 'NEXUS', groupId: 'tn.esprit.rh', nexusUrl: '192.168.56.3:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshots', version: '1.0.0-SNAPSHOT'
                 				}
                             }
 

@@ -51,7 +51,7 @@ agent any
                                        echo """Bravo! tous les tests sont pris en charge"""
                                        }
                                    }
-					stage('Sending email'){
+				 stage('Sending email'){
 	            			steps {
 	            			
 	            				  emailext attachLog: true, body: "the result is :  ${currentBuild.result}", compressLog: true, subject: "Status of pipeline: ${currentBuild.fullDisplayName}", to: 'ayman.aloulou@esprit.tn'

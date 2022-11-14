@@ -55,7 +55,7 @@ agent any
 	            			steps {
 	             mail bcc: '', body: '''Hello from ayman,
 	             Devops Pipeline with success.
-	             Cordialement''', cc: '', from: '', replyTo: '', subject: 'Devops', to: 'ayman.aloulou@esprit.tn'
+	             ''', cc: '', from: '', replyTo: '', subject: 'Devops', to: 'ayman.aloulou@esprit.tn'
 	             }
 	        }
 

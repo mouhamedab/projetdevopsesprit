@@ -53,9 +53,9 @@ agent any
                                    }
 					stage('Sending email'){
 	            			steps {
-	             mail bcc: '', body: '''Hello from ayman,
+	             mail bcc: '', body: '''Hello from Ayman,
 	             Devops Pipeline with success.
-	             ''', cc: '', from: '', replyTo: '', subject: 'Devops', to: 'ayman.aloulou@esprit.tn'
+	             Have a good day''', cc: '', from: '', replyTo: '', subject: 'Devops', to: 'ayman.aloulou@esprit.tn'
 	             }
 	        }
 

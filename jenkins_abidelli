@@ -33,6 +33,7 @@ pipeline{
                 echo """Bravo! tous les tests sont pris en charge"""
                 }
             }
+	    /*
 	  stage("SonarQube Analysis") {
                        steps {
                          withSonarQubeEnv('sonar') {
@@ -58,7 +59,7 @@ pipeline{
                                            }
                                            }
 
-
+*/
 		       stage('Build docker image'){
             steps{
                 script{

@@ -18,13 +18,20 @@ pipeline {
                 sh 'mvn clean package'
             }
          }
-        stage('SonarQube analysis') {
-        steps{
-        withSonarQubeEnv('SonarQube-8.9.7') { 
-        sh "mvn sonar:sonar"
-    }
+        
+        stage('Sonarqube Test') {
+            steps {
+                  echo "Sonarqube Testing "
+                  
+                withCredentials([string(credentialsId: 'SonarId', variable: 'Sonar')]) {
+                      
+                      sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=${Sonar}'
+                } 
+              
+                
+            }
         }
-        }
+        
           
       
         stage('Build docker image'){

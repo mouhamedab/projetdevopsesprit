@@ -19,19 +19,11 @@ pipeline {
             }
          }
         
-        stage('Sonarqube Test') {
-            steps {
-                  echo "Sonarqube Testing "
-                  
-                withCredentials([string(credentialsId: 'SonarId', variable: 'Sonar')]) {
-                      
-                      sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=${Sonar}'
-                } 
-              
-                
+        stage (MVN SONARQUBE) {
+            steps{
+                sh 'mvn sonar: sonar -Dsonar.login=admin -Dsonar.password=sonar'
             }
-        }
-        
+         }
           
       
         stage('Build docker image'){

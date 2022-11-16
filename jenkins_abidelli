@@ -39,7 +39,7 @@ pipeline{
                  sh 'docker-compose up -d '
                 }
                 }
-		
+		/*
 	  stage("SonarQube Analysis") {
                        steps {
                          withSonarQubeEnv('sonar') {
@@ -67,7 +67,7 @@ pipeline{
                                            }
                                            }
 
-
+*/
 		       stage('Build docker image'){
             steps{
                 script{

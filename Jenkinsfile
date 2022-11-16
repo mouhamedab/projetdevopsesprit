@@ -53,21 +53,8 @@ agent any
                                    }
 				 stage('Sending email'){
 	            			steps {
-	            			 post {
-                                                    success {
-                                                         mail to: "ayman.aloulou@esprit.tn",
-                                                                subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
-                                                                body: "the result is :  ${currentBuild.result}"
-                                                        echo 'successful'
-                                                    }
-                                                    failure {
-                                                        mail to: "ayman.aloulou@esprit.tn",
-                                                                subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
-                                                                body: "the result is :  ${currentBuild.result}"
-                                                        echo 'failed'
-                                                    }
-                                                  }
 
+	            				  emailext attachLog: true, body: "the result is :  ${currentBuild.result}", compressLog: true, subject: "Status of pipeline: ${currentBuild.fullDisplayName}", to: "ayman.aloulou@esprit.tn"
 						    }
 				    }
 	        

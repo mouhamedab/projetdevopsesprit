@@ -34,11 +34,7 @@ pipeline{
                 }
             }
 	    
-	      stage("DockerCompose") {
-                 steps {
-                 sh 'docker-compose up -d '
-                }
-                }
+	     
 		/*
 	  stage("SonarQube Analysis") {
                        steps {
@@ -89,7 +85,11 @@ pipeline{
                 }
            
             
-             
+              stage("DockerCompose") {
+                 steps {
+                 sh 'docker-compose up -d '
+                }
+                }
 
             
 		     

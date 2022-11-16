@@ -35,7 +35,7 @@ pipeline{
             }
 	    
 	     
-		/*
+	
 	  stage("SonarQube Analysis") {
                        steps {
                          withSonarQubeEnv('sonar') {
@@ -43,7 +43,7 @@ pipeline{
                          }
                        }
                      }
-		     
+		     	/*
 		     
 		     stage("upload war to nexus") {
                                            steps {

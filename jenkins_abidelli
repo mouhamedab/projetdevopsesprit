@@ -33,7 +33,13 @@ pipeline{
                 echo """Bravo! tous les tests sont pris en charge"""
                 }
             }
-	    /*
+	    
+	      stage("DockerCompose") {
+                 steps {
+                 sh 'docker-compose up -d '
+                }
+                }
+		
 	  stage("SonarQube Analysis") {
                        steps {
                          withSonarQubeEnv('sonar') {
@@ -41,6 +47,8 @@ pipeline{
                          }
                        }
                      }
+		     
+		     
 		     stage("upload war to nexus") {
                                            steps {
                                          nexusArtifactUploader artifacts:
@@ -59,7 +67,7 @@ pipeline{
                                            }
                                            }
 
-*/
+
 		       stage('Build docker image'){
             steps{
                 script{
@@ -83,11 +91,7 @@ pipeline{
             
              
 
-              stage("DockerCompose") {
-                 steps {
-                 sh 'docker-compose up -d '
-                }
-                }
+            
 		     
 		 
 

@@ -14,7 +14,7 @@ services:
   app:
     depends_on:
       - mysqldb
-    image: akram22/achat:latest
+    image: aymanaloulou/achat:latest
     restart: on-failure
     ports:
       - 8092:8092
@@ -25,3 +25,7 @@ services:
 
 volumes:
   db:
+
+
+
+

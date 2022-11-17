@@ -86,7 +86,7 @@ agent any
                        	}
                        	}
 
-                    stage('Run app With DockerCompose') {
+                    stage('Run Spring && MySQL Containers') {
                                                                  steps {
                                                                      sh "docker-compose -f docker-compose.yml up -d  "
                                                                  }

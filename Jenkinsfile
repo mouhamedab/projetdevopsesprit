@@ -66,7 +66,7 @@ agent any
 
                     stage("DockerLogin") {
                                     steps {
-                                    sh 'docker login --username aymanaloulou --password aymouna78'
+                                    sh 'docker login --username aymanaloulou --password $DOCKERPASSWORD'
                                     }
                                     }
 

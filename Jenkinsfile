@@ -114,16 +114,14 @@ agent any
 
                                             success {
                                                  mail to: "ayman.aloulou@esprit.tn",
-                                                        attachLog: true,
-                                                        compressLog: true,
+
                                                         subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
                                                         body: "the result is :  ${currentBuild.currentResult}"
                                                 echo 'BUILD successful'
                                             }
                                             failure {
                                                  mail to: "ayman.aloulou@esprit.tn",
-                                                 attachLog: true,
-                                                 compressLog: true,
+
                                                  subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
                                                  body: "the result is :  ${currentBuild.currentResult}"
                                                 echo 'BUILD failed'

@@ -15,7 +15,7 @@ services:
     depends_on:
       - mysqldb
     image: aymanaloulou/devopsimagedocker:latest
-    restart: on-failure
+    
     ports:
       - 8092:8092
     volumes:

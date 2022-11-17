@@ -43,7 +43,7 @@ pipeline{
                          }
                        }
                      }
-		     	/*
+		     	
 		     
 		     stage("upload war to nexus") {
                                            steps {
@@ -62,7 +62,7 @@ pipeline{
                                                 version: '1.0'
                                            }
                                            }
-*/
+
 
 		       stage('Build docker image'){
             steps{

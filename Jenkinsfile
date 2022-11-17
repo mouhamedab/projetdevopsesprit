@@ -111,7 +111,7 @@ agent any
 				 stage('Sending email'){
 	            			steps {
 
-	            			emailext  body: "the result is :  ${currentBuild.currentResult}", compressLog: true,attachLog: true, subject: "Status of pipeline: ${currentBuild.fullDisplayName}", to: "ayman.aloulou@esprit.tn"
+	            			emailext  body: "the result is :  ${currentBuild.currentResult}", subject: "Status of pipeline: ${currentBuild.fullDisplayName}", to: "ayman.aloulou@esprit.tn"
 
 						    }
 				            }

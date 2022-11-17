@@ -66,9 +66,12 @@ agent any
 
                     stage("DockerLogin") {
                                     steps {
-                                    sh 'docker login --username aymanaloulou --password $DOCKERPASSWORD'
-                                    }
-                                    }
+                                             withDockerRegistry([ credentialsId: "DockerHub", url: "" ])
+                                             {
+                                                  sh 'docker login '
+                                             }
+                                          }
+                                        }
 
                 	stage('Build image') {
                           	steps {

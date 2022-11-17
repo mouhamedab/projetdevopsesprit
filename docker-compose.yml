@@ -1,25 +1,15 @@
-version: "2"
+        version: "3.4"
 
-services:
-  Sonarqube:
-    image: sonarqube:8.9.7-community
-    ports:
-      - "9000:9000"
-      - "9092:9092"
-    volumes:
-      - 'sonarQube_data:/opt/SonarQube/data'
-      - 'sonarQube_extensions:/opt/SonarQube/extensions'
-      - 'sonarQube_logs:/opt/SonarQube/logs'
+    services:
+      mysqlcontainer:
+        container_name: mysqlcontainer2
+        ports:
+          - '3307:3306'
+        environment:
+          - MYSQL_ROOT_PASSWORD=admin
+          - MYSQL_DATABASE=achatdb
 
-  nexus:
-    image: sonatype/nexus3
-    ports:
-      - "8081:8081"
-    volumes:
-      - "nexus-data:/sonatype-work"
-
-volumes:
-  sonarQube_data:
-  sonarQube_extensions:
-  sonarQube_logs:
-  nexus-data:
+        image: 'mysql:latest'
+        restart: always
+        volumes:
+          - mysqlcontainer:/var/lib/mysql:rw

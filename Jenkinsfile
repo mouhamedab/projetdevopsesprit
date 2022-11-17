@@ -113,6 +113,7 @@ agent any
 
 	            				  emailext attachLog: true, body: "the result is :  ${currentBuild.currentResult}", compressLog: true, subject: "Status of pipeline: ${currentBuild.fullDisplayName}", to: "ayman.aloulou@esprit.tn"
 	            				  emailext attachLog: true, body: "the result is :  ${currentBuild.currentResult}", compressLog: true, subject: "Status of pipeline: ${currentBuild.fullDisplayName}", to: "ayman.aloulou@gmail.com"
+	            				  //test
 						    }
 				    }
 	        

@@ -63,6 +63,13 @@ agent any
                                        }
                                    }
 
+
+                    stage("DockerLogin") {
+                                    steps {
+                                    sh 'docker login --username aymanaloulou --password aymouna78'
+                                    }
+                                    }
+
                 	stage('Build image') {
                           	steps {
                       		 sh "docker build -t aymanaloulou/devopsimagedocker ."

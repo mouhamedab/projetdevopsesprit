@@ -64,14 +64,7 @@ agent any
                                    }
 
 
-                    stage("DockerLogin") {
-                                    steps {
-                                             withDockerRegistry([ credentialsId: "DockerHub", url: "" ])
-                                             {
-                                                  sh 'docker login '
-                                             }
-                                          }
-                                        }
+
 
                 	stage('Build image') {
                           	steps {

@@ -8,15 +8,16 @@ agent any
 
         stages{
 
-         stages {
-                        stage('Check out Git'){
+                   stage('Check out Git'){
 
                         steps{
-                                echo 'Pulling...';
-                                git branch: 'aymanaloulou1',
-                                url : 'https://github.com/mouhamedab/projetdevopsesprit.git';
+                            echo 'Pulling...';
+                            git branch: 'aymanaloulou1',
+                            url : 'https://github.com/mouhamedab/projetdevopsesprit.git';
                             }
                         }
+
+
 
                    stage('Cleaning the project') {
                         steps{

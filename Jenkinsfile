@@ -48,9 +48,46 @@ agent any
                                        sh '''mvn -version
                                        mvn -B -DskipTests clean package'''
                                        //sh 'mvn test'
-                                       echo """Bravo! tous les tests sont pris en charge"""
+                                       echo """ tous les tests sont pris en charge"""
                                        }
                                    }
+
+                	stage('Build image') {
+                          	steps {
+                      		 sh "docker build -t aymanaloulou/devopsimagedocker ."
+                      		}
+                      		}
+
+
+                       stage('Push image') {
+                			steps {
+                			    withDockerRegistry([ credentialsId: "DockerHub", url: "" ]) {
+
+                       	  sh "docker push aymanaloulou/devopsimagedocker"
+                       	}
+                       	}
+                       	}
+
+                      stage('Run app With DockerCompose') {
+                             steps {
+                                 sh "docker-compose -f docker-compose.yml up -d  "
+                             }
+                             }
+
+                   stage('Cleaning up') {
+                        steps {
+               			sh "docker rmi -f aymanaloulou/devopsimagedocker"
+                        }
+                    }
+
+
+
+
+
+
+
+
+
 				 stage('Sending email'){
 	            			steps {
 

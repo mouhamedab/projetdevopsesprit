@@ -29,7 +29,7 @@ agent any
                                               steps {
                                                           sh '''mvn -version
                                                           mvn -B -DskipTests clean package'''
-                                                          //sh 'mvn test'
+                                                          sh 'mvn test'
                                                           echo """ tous les tests sont pris en charge"""
                                                           }
                                                       }

@@ -25,12 +25,27 @@ agent any
                            }
                        }
 
+                   stage('JUnit/Mockito'){
+                                              steps {
+                                                          sh '''mvn -version
+                                                          mvn -B -DskipTests clean package'''
+                                                          //sh 'mvn test'
+                                                          echo """ tous les tests sont pris en charge"""
+                                                          }
+                                                      }
+
 
        	        stage('Build') {
              		    steps {
                		sh 'mvn -B -DskipTests clean package'
              		          }
                    	}
+
+                stage('Run app With DockerCompose') {
+                                             steps {
+                                                 sh "docker-compose -f docker-compose.yml up -d  "
+                                             }
+                                             }
 
 
 
@@ -54,14 +69,7 @@ agent any
 
 
                }
-                 stage('JUnit/Mockito'){
-                           steps {
-                                       sh '''mvn -version
-                                       mvn -B -DskipTests clean package'''
-                                       //sh 'mvn test'
-                                       echo """ tous les tests sont pris en charge"""
-                                       }
-                                   }
+
 
 
 
@@ -82,11 +90,7 @@ agent any
                        	}
                        	}
 
-                      stage('Run app With DockerCompose') {
-                             steps {
-                                 sh "docker-compose -f docker-compose.yml up -d  "
-                             }
-                             }
+
 
                    stage('Cleaning up') {
                         steps {

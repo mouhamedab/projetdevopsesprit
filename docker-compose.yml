@@ -1,15 +1,27 @@
-version: "3.4"
+version: "3"
+services:
+  mysqldb:
+    image: mysql
+    container_name: mysqldb
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_DATABASE=achatdb
+    ports:
+      - 3306:3306
+    volumes:
+      - db:/var/lib/mysql
+  app:
+    depends_on:
+      - mysqldb
+    image: akram22/achat:latest
+    restart: on-failure
+    ports:
+      - 8092:8092
+    volumes:
+      - .m2:/root/.m2
+    stdin_open: true
+    tty: true
 
-    services:
-      mysqlcontainer:
-        container_name: mysqlcontainer2
-        ports:
-          - '3307:3306'
-        environment:
-          - MYSQL_ROOT_PASSWORD=admin
-          - MYSQL_DATABASE=achatdb
-
-        image: 'mysql:latest'
-        restart: always
-        volumes:
-          - mysqlcontainer:/var/lib/mysql:rw
+volumes:
+  db:

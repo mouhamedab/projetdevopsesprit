@@ -77,11 +77,7 @@ pipeline{
                 sh 'docker login --username mouhamedabdelli --password 21449897Med'
                 }
                 }
-		 stage("DockerCompose") {
-                 steps {
-                 sh 'docker-compose up -d '
-                }
-                }
+		
 
 
    stage("DockerPush") {
@@ -90,7 +86,11 @@ pipeline{
                 }
                 }
            
-            
+             stage("DockerCompose") {
+                 steps {
+                 sh 'docker-compose up -d '
+                }
+                }
              
             
 		     
